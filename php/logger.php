@@ -190,9 +190,9 @@ class Logger
 				$out_message = '';
 				$left_side = '| ';
 				$right_side = ' ';
-				if( $log_target->output_group && $this->Config->group )
+				if( $log_target->output_group && $log_entry->group )
 				{
-					$out_message .= $left_side.$this->Config->group.$right_side;
+					$out_message .= $left_side.$log_entry->group.$right_side;
 				}
 				if( $log_target->output_date && $log_entry->date )
 				{
