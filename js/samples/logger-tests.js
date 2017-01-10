@@ -1,12 +1,9 @@
+//
+
 var Logger = require('../logger').Logger;
 
-// var console_log_target = {};
 var console_log_target = Logger.AddLogTarget('console');
-// var console_log_target = Logger.Config.targets[0];
-
 var file_log_target = Logger.AddLogTarget('file');
-// file_log_target.log_filename = 'logger-tests';
-// file_log_target.log_extension = 'log';
 
 Logger.Config.group = 'Test Group';
 
@@ -36,7 +33,7 @@ Logger.LogInfo("Here is some extra data:", obj);
 
 //==========================================
 Logger.LogSeparatorLine();
-console_log_target.log_levels = 'TDIWE';
+console_log_target.log_levels = 'TDIWEF';
 
 console_log_target.output_group = false;
 console_log_target.output_date = false;

@@ -48,6 +48,7 @@ Logger.AddLogTarget =
 		var log_target = {
 			log_device: LogDevice,
 			log_levels: LogLevels,
+			// Output options (all devices)
 			output_group: true,
 			output_date: true,
 			output_time: true,
@@ -55,7 +56,7 @@ Logger.AddLogTarget =
 			output_timezone: true,
 			output_severity: true,
 			output_severity_words: true,
-			// File specific
+			// Options for file device
 			log_path: '',
 			log_filename: 'logger',
 			log_extension: 'log',
@@ -102,7 +103,7 @@ Logger.SendTextToLogTarget =
 		{
 			console.log(Text);
 		}
-		if (LogTarget.log_device == 'stderr')
+		else if (LogTarget.log_device == 'stderr')
 		{
 			console.error(Text);
 		}
@@ -199,9 +200,9 @@ Logger.LogMessage =
 					var out_message = '';
 					var left_side = '| ';
 					var right_side = ' ';
-					if (log_target.output_group && Logger.Config.group)
+					if (log_target.output_group && log_entry.group)
 					{
-						out_message += left_side + Logger.Config.group + right_side;
+						out_message += left_side + log_entry.group + right_side;
 					}
 					if (log_target.output_date && log_entry.date)
 					{
@@ -287,19 +288,21 @@ Logger.LogFatal =
 Logger.LogBlankLine =
 	function LogBlankLine()
 	{
+		var date = new Date();
 		Logger.Config.targets.forEach(
 			function(log_target)
 			{
-				Logger.SendTextToLogTarget(new Date(), '', log_target);
+				Logger.SendTextToLogTarget(date, '', log_target);
 			});
 	};
 Logger.LogSeparatorLine =
 	function LogSeparatorLine()
 	{
+		var date = new Date();
 		Logger.Config.targets.forEach(
 			function(log_target)
 			{
-				Logger.SendTextToLogTarget(new Date(), '==========================================', log_target);
+				Logger.SendTextToLogTarget(date, '==========================================', log_target);
 			});
 	};
 
