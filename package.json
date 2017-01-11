@@ -1,47 +1,47 @@
 {
-	"name": "liqui-logger",
-	"version": "0.0.5",
-	"homepage": "https://github.com/agbowlin/liqui-logger",
-	"description": "An easy logging system implemented for various platforms.",
+    "name": "liqui-logger",
+    "version": "0.0.6",
+    "homepage": "https:\/\/github.com\/agbowlin\/liqui-logger",
+    "description": "An easy logging system implemented for various platforms.",
+    "authors": [
+        {
+            "name": "Andre G. Bowlin",
+            "email": "agbowlin@gmail.com",
+            "homepage": "http:\/\/liquicode.com"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git:\/\/github.com\/agbowlin\/liqui-logger.git"
+    },
+    "license": "MIT",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser",
+        "nodejs",
+        "log",
+        "logger",
+        "logging"
+    ],
+    "files": [
+        "package.json",
+        "bower.json",
+        "LICENSE",
+        "README.md",
+        "js\/*",
+        "php\/*"
+    ],
+    "ignore": [
+        ".*",
+        "bower_components",
+        "node_modules",
+        "build",
+        "*.log"
+    ],
+    "devDependencies": {
 
-	"authors": [
-	{
-		"name": "Andre G. Bowlin",
-		"email": "agbowlin@gmail.com",
-		"homepage": "http://liquicode.com"
-	}],
-	"repository":
-	{
-		"type": "git",
-		"url": "git://github.com/agbowlin/liqui-logger.git"
-	},
-	"license": "MIT",
-	"keywords": [
-		"util",
-		"functional",
-		"server",
-		"client",
-		"browser",
-		"nodejs",
-		"log",
-		"logger",
-		"logging"
-	],
-	"files": [
-		"package.json",
-		"bower.json",
-		"LICENSE",
-		"README.md",
-		"js/*",
-		"php/*"
-	],
-	"ignore": [
-		".*",
-		"bower_components",
-		"node_modules",
-		"build",
-		"*.log"
-	],
-	"devDependencies":
-	{}
+    }
 }
