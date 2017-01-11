@@ -1,13 +1,13 @@
 {
     "name": "liqui-logger",
-    "version": "0.0.9",
-    "homepage": "https:\/\/github.com\/agbowlin\/liqui-logger",
+    "version": "0.0.10",
+    "homepage": "https://github.com/agbowlin/liqui-logger",
     "description": "An easy logging system implemented for various platforms.",
     "authors": [
         {
             "name": "Andre G. Bowlin",
             "email": "agbowlin@gmail.com",
-            "homepage": "http:\/\/liquicode.com"
+            "homepage": "http://liquicode.com"
         }
     ],
     "moduleType": [
@@ -15,7 +15,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git:\/\/github.com\/agbowlin\/liqui-logger.git"
+        "url": "git://github.com/agbowlin/liqui-logger.git"
     },
     "license": "MIT",
     "keywords": [
