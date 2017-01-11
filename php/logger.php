@@ -20,7 +20,6 @@ class Logger
 		$config->always_use_utc = false;
 		$config->targets = [];
 		$this->Config = $config;
-		$this->AddLogTarget('console');
 		return;
 	}
 
@@ -40,7 +39,7 @@ class Logger
 		$log_target->output_timezone = true;
 		$log_target->output_severity = true;
 		$log_target->output_severity_words = true;
-		// Options for file device
+		// Options for a file device
 		$log_target->log_path = '';
 		$log_target->log_filename = 'logger';
 		$log_target->log_extension = 'log';
