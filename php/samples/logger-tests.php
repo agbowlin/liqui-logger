@@ -2,7 +2,7 @@
 
 require_once( '../logger.php' );
 
-$console_log_target = $Logger->Config->targets[0];
+$console_log_target = $Logger->AddLogTarget('console');
 $file_log_target = $Logger->AddLogTarget('file');
 
 $Logger->Config->group = 'Test Group';
