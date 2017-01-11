@@ -7,6 +7,8 @@ var file_log_target = Logger.AddLogTarget('file');
 
 Logger.Config.group = 'Test Group';
 
+Logger.LogInfo("Detected platform = " + Logger.platform + ".");
+
 Logger.LogTrace("This is an Trace message.");
 Logger.LogDebug("This is an Debug message.");
 Logger.LogInfo("This is an Info message.");
@@ -80,4 +82,12 @@ catch (exception)
 Logger.LogSeparatorLine();
 Logger.LogInfo("Its all good, exiting now.");
 
-process.exit();
+if(Logger.platform == 'nodejs')
+{
+	process.exit();
+}
+else if(Logger.platform == 'phantomjs')
+{
+	phantom.exit();
+}
+

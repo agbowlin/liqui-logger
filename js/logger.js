@@ -12,6 +12,67 @@ var Logger = {};
 
 
 //=====================================================================
+// Determine the platform we are executing on.
+Logger.platform = '';
+if (typeof phantom != 'undefined')
+{
+	Logger.platform = 'phantomjs';
+}
+else if (typeof require('path') != 'undefined')
+{
+	Logger.platform = 'nodejs';
+}
+else
+{
+	Logger.platform = 'browser';
+}
+
+
+//=====================================================================
+// Construct a platform specific file function.
+var npm_fs = null;
+var npm_path = null;
+
+function FileAppendTextLine(Path, Filename, Text)
+{
+	if (Logger.platform == 'browser')
+	{
+		return;
+	}
+	else if (Logger.platform == 'nodejs')
+	{
+		if (!npm_fs)
+		{
+			npm_fs = require('fs');
+		}
+		if (!npm_path)
+		{
+			npm_path = require('path');
+		}
+		var filename = npm_path.join(Path, Filename);
+		npm_fs.appendFileSync(filename, Text + "\n");
+		return;
+	}
+	else if (Logger.platform == 'phantomjs')
+	{
+		if (!npm_fs)
+		{
+			npm_fs = require('fs');
+		}
+		var filename = Path;
+		if(filename)
+		{
+			filename += npm_fs.separator;
+		}
+		filename += Filename;
+		npm_fs.write(filename, Text + "\n", 'a');
+		return;
+	}
+
+}
+
+
+//=====================================================================
 // Integrate with the browser environment.
 if (typeof window != 'undefined')
 {
@@ -21,12 +82,8 @@ if (typeof window != 'undefined')
 
 //=====================================================================
 // Integrate with the nodejs environment.
-var npm_fs = null;
-var npm_path = null;
 if (typeof exports != 'undefined')
 {
-	npm_fs = require('fs');
-	npm_path = require('path');
 	exports.Logger = Logger;
 }
 
@@ -109,23 +166,20 @@ Logger.SendTextToLogTarget =
 		}
 		else if (LogTarget.log_device == 'file')
 		{
-			if (npm_fs && npm_path)
+			var filename = LogTarget.log_filename;
+			if (LogTarget.use_hourly_logfiles)
 			{
-				var filename = npm_path.join(LogTarget.log_path, LogTarget.log_filename);
-				if (LogTarget.use_hourly_logfiles)
-				{
-					filename += '-' + Timestamp.toISOString.slice(0, 13).replace(/T/g, '-');
-				}
-				else if (LogTarget.use_daily_logfiles)
-				{
-					filename += '-' + Timestamp.toISOString.slice(0, 10);
-				}
-				if (LogTarget.log_extension)
-				{
-					filename += '.' + LogTarget.log_extension;
-				}
-				npm_fs.appendFileSync(filename, Text + "\n");
+				filename += '-' + Timestamp.toISOString.slice(0, 13).replace(/T/g, '-');
 			}
+			else if (LogTarget.use_daily_logfiles)
+			{
+				filename += '-' + Timestamp.toISOString.slice(0, 10);
+			}
+			if (LogTarget.log_extension)
+			{
+				filename += '.' + LogTarget.log_extension;
+			}
+			FileAppendTextLine(LogTarget.log_path, filename, Text);
 		}
 		return;
 	};
