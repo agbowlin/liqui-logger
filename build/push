@@ -1,0 +1,37 @@
+#!/bin/bash
+
+node build/push.js "$@"
+
+# echo ==========================================
+# echo Push:
+# echo LOCATION = ${pwd}
+
+# # Get the command line arguments.
+# for i in "$@"
+# do
+# case $i in
+# 	-h|--help)
+# 		DO_HELP=TRUE
+# 	;;
+# 	-m=*|--message=*)
+# 		MESSAGE="${i#*=}"
+# 	;;
+# 	-v=*|--version=*)
+# 		VERSION="${i#*=}"
+# 	;;
+# 	*)
+# 		# unknown option
+# 		echo Unknown option: $i
+# 		DO_HELP=TRUE
+# 	;;
+# esac
+# done
+
+# echo DO_HELP = ${DO_HELP}
+# echo MESSAGE = ${MESSAGE}
+# echo VERSION = ${VERSION}
+
+# #git add .
+# #git commit -m %1
+
+# echo ==========================================

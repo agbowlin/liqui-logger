@@ -32,7 +32,7 @@
 		"bower.json",
 		"LICENSE",
 		"README.md",
-		"js/*"
+		"js/*",
 		"php/*"
 	],
 	"ignore": [
