@@ -169,11 +169,11 @@ Logger.SendTextToLogTarget =
 			var filename = LogTarget.log_filename;
 			if (LogTarget.use_hourly_logfiles)
 			{
-				filename += '-' + Timestamp.toISOString.slice(0, 13).replace(/T/g, '-');
+				filename += '-' + Timestamp.toISOString().slice(0, 13).replace(/T/g, '-');
 			}
 			else if (LogTarget.use_daily_logfiles)
 			{
-				filename += '-' + Timestamp.toISOString.slice(0, 10);
+				filename += '-' + Timestamp.toISOString().slice(0, 10);
 			}
 			if (LogTarget.log_extension)
 			{
@@ -361,18 +361,18 @@ Logger.LogSeparatorLine =
 	};
 
 
-//=====================================================================
-Logger.ObjectJson =
-	function ObjectJson(SomeObject)
-	{
-		return JSON.stringify(SomeObject, undefined, "    ");
-	};
+// //=====================================================================
+// Logger.ObjectJson =
+// 	function ObjectJson(SomeObject)
+// 	{
+// 		return JSON.stringify(SomeObject, undefined, "    ");
+// 	};
 
 
-//=====================================================================
-Logger.LogObject =
-	function LogObject(SomeObject)
-	{
-		Logger.LogMessage("\n" + Logger.ObjectJson(SomeObject));
-		return;
-	};
+// //=====================================================================
+// Logger.LogObject =
+// 	function LogObject(SomeObject)
+// 	{
+// 		Logger.LogMessage("\n" + Logger.ObjectJson(SomeObject));
+// 		return;
+// 	};
