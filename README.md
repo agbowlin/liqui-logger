@@ -25,14 +25,15 @@ or: Download the source code
 https://github.com/agbowlin/liqui-logger/archive/master.zip
 ```
 
-Source files will be located in a platform specific subfolders of the installation (e.g. js, php).
-Samples can also be found within these subfolders.
+Logger source files will be located within the platform specific subfolders
+of the installation (e.g. js/, php/).
+Samples can also be found underneath these subfolders.
 
 
 Getting Started
 ------------------------------------------
 
-### Javascript: Browser
+### Javascript: Browser (client)
 ```
 // logger.js in installed via 'bower install liqui-logger'
 var Logger = require('bower_components/liqui-logger/js/logger').Logger;
@@ -76,7 +77,7 @@ Sample Output
     "Field1": "Foo",             <--- extra data
     "Field2": "Bar"
 }
-==========================================
+==========================================      <--- separator line
 ```
 
 
@@ -155,12 +156,12 @@ If the first letter of a message severity (e.g. I for INFO), does not occur with
 
 The following message severities are supported:
 - TRACE : Used for tracing the flow of logic within software.
--	Trace messages are inserted at function entry and exit points (e.g. Starting FooBar() ...).
-	Trace messages are also used to report on the execution of significant logic milestones (e.g. Calc completed).
+	Trace messages are inserted at function entry and exit points (e.g. 'Starting FooBar() ...'').
+	Trace messages are also used to report on the execution of significant logic milestones (e.g. 'Calc completed').
 - DEBUG : Used to output diagnostic data and program state information to the log.
 	This type information is useful for validating and debugging software processes.
-	Debug messages will often contain data dumps of some variables.
-	Use the `ExtraData` parameter in any Log function to dump the JSON representation
+	Debug messages will often contain data dumps of some program variables.
+	Use the `ExtraData` parameter in any of the Log functions to dump the JSON representation
 	of a data object to the log with your `Message`.
 - INFO : Informational messages regarding the health and processing activity of	software.
 	This will typically be the minimum severity set for log messages within	a production environment.
@@ -179,9 +180,9 @@ The following message severities are supported:
 - FATAL : Fatal errors prevent the software from executing at all. After a fatal
 	error, the software should shut down immediately.
 
-### Strategies
+### Logging Strategies
 
-When developing, you may want to have only informational message sent to the
+During development, you may want to have only informational message sent to the
 console while maintaining a log file containing all log messages. You would
 add two log devices and configure the console device to limit the severity of
 log messages displayed on it.
@@ -212,7 +213,7 @@ production_log_target.use_daily_logfiles = true; // One log file per day
 var debug_log_target = Logger.AddLogTarget('file', 'TDIWEF');
 debug_log_target.use_hourly_logfiles = true; // One log file per hour
 
-Logger.LogMessage( 'Hello, World!', 'INFO' ); // Just the facts, available in both.
+Logger.LogMessage( 'Hello, World!', 'INFO' ); // Just the facts, available in both targets.
 Logger.LogMessage( 'Dump of the foo object:', 'DEBUG', foo ); // Only in the debug target!
 ```
 
