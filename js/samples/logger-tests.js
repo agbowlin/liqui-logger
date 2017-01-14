@@ -1,8 +1,9 @@
 //
 
-var Logger = require('../logger').Logger;
+var Logger = require('../logger').Logger();
 
 var console_log_target = Logger.AddLogTarget('console');
+var console_log_target = Logger.Config.targets[0];
 var file_log_target = Logger.AddLogTarget('file');
 
 Logger.Config.group = 'Test Group';
@@ -82,12 +83,11 @@ catch (exception)
 Logger.LogSeparatorLine();
 Logger.LogInfo("Its all good, exiting now.");
 
-if(Logger.platform == 'nodejs')
+if (Logger.platform == 'nodejs')
 {
 	process.exit();
 }
-else if(Logger.platform == 'phantomjs')
+else if (Logger.platform == 'phantomjs')
 {
 	phantom.exit();
 }
-

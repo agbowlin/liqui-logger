@@ -36,7 +36,7 @@ Getting Started
 ### Javascript: Browser (client)
 ```
 // logger.js in installed via 'bower install liqui-logger'
-var Logger = require('bower_components/liqui-logger/js/logger').Logger;
+var Logger = require('bower_components/liqui-logger/js/logger').Logger();
 Logger.AddLogTarget( 'console' );
 Logger.LogMessage( 'Hello, World!' );
 ```
@@ -44,9 +44,14 @@ Logger.LogMessage( 'Hello, World!' );
 ### Javascript: NodeJS and PhantomJS
 ```
 // logger.js in installed via 'npm install liqui-logger'
-var Logger = require('liqui-logger/js/logger').Logger;
+var Logger = require( 'liqui-logger/js/logger' ).Logger();
 Logger.AddLogTarget( 'console' );
 Logger.LogMessage( 'Hello, World!' );
+```
+You can also provide a Group and a Log Target in the constructor:
+```
+var Logger = require( 'liqui-logger/js/logger' ).Logger( 'My Group', 'console', 'TDIWEF' );
+Logger.LogMessage( 'Hello, My Logs!' );
 ```
 
 ### PHP
@@ -55,6 +60,12 @@ Logger.LogMessage( 'Hello, World!' );
 require_once( 'logger.php' );
 $Logger->AddLogTarget( 'console' );
 $Logger->LogMessage( 'Hello, World!' );
+```
+In PHP, you can also specify a Group and Log Device when creating a new instance of Logger:
+```
+require_once( 'logger.php' );
+$MyLogger = new Logger( 'My Group', 'console', 'TDIWEF' );
+$MyLogger->LogMessage( 'Hello, My Logs!' );
 ```
 
 

@@ -13,13 +13,17 @@ class Logger
 
 
 	//---------------------------------------------------------------------
-	function __construct()
+	function __construct( $Group, $LogDevice, $LogLevels )
 	{
 		$config = new stdClass();
-		$config->group = '';
+		$config->group = $Group || '';
 		$config->always_use_utc = false;
 		$config->targets = [];
 		$this->Config = $config;
+		if( $LogDevice )
+		{
+			$this->AddLogTarget( $LogDevice, $LogLevels );
+		}
 		return;
 	}
 
