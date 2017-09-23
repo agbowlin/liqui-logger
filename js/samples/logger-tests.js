@@ -1,12 +1,30 @@
 //
 
-var Logger = require('../logger').Logger();
+//==========================================
+// Manual initialization:
+// var Logger = require('../logger').Logger();
+// Logger.Config.group = 'Test Group';
+// var console_log_target = Logger.AddLogTarget('console');
 
-var console_log_target = Logger.AddLogTarget('console');
+//==========================================
+// Initialization via constructor parameters:
+var Logger = require('../logger').Logger('Test Group', 'console');
 var console_log_target = Logger.Config.targets[0];
+
+//==========================================
+// Add a file target to store log entries in a file.
+// The default name of the file is logger.log and is stored in the current working directory.
 var file_log_target = Logger.AddLogTarget('file');
 
-Logger.Config.group = 'Test Group';
+//==========================================
+// You can specify the location and name of the log file for this target.
+// The following configuration will generate log files like: [logs/test-group-2015-12-28.log]
+// file_log_target.log_path = 'logs';
+// file_log_target.log_filename = 'test-group';
+// file_log_target.log_extension = 'log';
+// file_log_target.use_daily_logfiles = true;
+// file_log_target.use_hourly_logfiles = false;
+
 
 Logger.LogInfo("Detected platform = " + Logger.platform + ".");
 

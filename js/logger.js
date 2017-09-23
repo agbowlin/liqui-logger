@@ -107,7 +107,6 @@ var Logger = function(Group, LogDevice, LogLevels)
 				log_extension: 'log',
 				use_hourly_logfiles: false,
 				use_daily_logfiles: false
-
 			};
 			Logger.Config.targets.push(log_target);
 			return log_target;
