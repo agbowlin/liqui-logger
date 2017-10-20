@@ -6,6 +6,12 @@ liqui-logger
 An easy logging system implemented for various platforms.
 
 
+TODO
+------------------------------------------
+
+- Add sugar for standard logger functions: trace, debug, info/log, warn, error
+
+
 Installation
 ------------------------------------------
 

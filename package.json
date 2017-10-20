@@ -1,6 +1,6 @@
 {
     "name": "liqui-logger",
-    "version": "0.0.19",
+    "version": "0.0.20",
     "homepage": "https://github.com/agbowlin/liqui-logger",
     "description": "An easy logging system implemented for various platforms.",
     "authors": [
