@@ -6,12 +6,6 @@ liqui-logger
 An easy logging system implemented for various platforms.
 
 
-TODO
-------------------------------------------
-
-- Add sugar for standard logger functions: trace, debug, info/log, warn, error
-
-
 Installation
 ------------------------------------------
 
@@ -34,7 +28,7 @@ https://github.com/agbowlin/liqui-logger/archive/master.zip
 
 Logger source files will be located within the platform specific subfolders
 of the installation (e.g. js/, php/).
-Samples can also be found underneath these subfolders.
+Samples for each platform can also be found underneath these subfolders.
 
 
 Getting Started
@@ -55,7 +49,8 @@ var Logger = require( 'liqui-logger/js/logger' ).Logger();
 Logger.AddLogTarget( 'console' );
 Logger.LogMessage( 'Hello, World!' );
 ```
-You can also provide a Group and a Log Target in the constructor:
+In javascript you can create a new Log Target by providing a Log Group, Log Target,
+and message severity flags within the constructor:
 ```
 var Logger = require( 'liqui-logger/js/logger' ).Logger( 'My Group', 'console', 'TDIWEF' );
 Logger.LogMessage( 'Hello, My Logs!' );
@@ -68,7 +63,8 @@ require_once( 'logger.php' );
 $Logger->AddLogTarget( 'console' );
 $Logger->LogMessage( 'Hello, World!' );
 ```
-In PHP, you can also specify a Group and Log Device when creating a new instance of Logger:
+In PHP you can create a new Log Target by providing a Log Group, Log Target,
+and message severity flags within the constructor:
 ```
 require_once( 'logger.php' );
 $MyLogger = new Logger( 'My Group', 'console', 'TDIWEF' );
@@ -84,10 +80,10 @@ Sample Output
       |            |            |       |       |         |
       v            v            v       v       v         v
 ==========================================
-| Test Group | 2017-01-12 | 03:42:37 | 1547 | TRACE | This is an Trace message.
-| Test Group | 2017-01-12 | 03:42:37 | 1548 | DEBUG | This is an Debug message.
+| Test Group | 2017-01-12 | 03:42:37 | 1547 | TRACE | This is a Trace message.
+| Test Group | 2017-01-12 | 03:42:37 | 1548 | DEBUG | This is a Debug message.
 | Test Group | 2017-01-12 | 03:42:37 | 1549 | INFO  | This is an Info message.
-| Test Group | 2017-01-12 | 03:42:37 | 1551 | WARN  | This is an Warn message.
+| Test Group | 2017-01-12 | 03:42:37 | 1551 | WARN  | This is a Warn message.
 | Test Group | 2017-01-12 | 03:42:37 | 1552 | ERROR | This is an Error message.
 ==========================================
 | Test Group | 2017-01-12 | 03:42:37 | 1559 | INFO  | Here is some extra data:
