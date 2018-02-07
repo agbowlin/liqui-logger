@@ -1,7 +1,7 @@
 <?php
 
 
-$Logger = new Logger();
+$Logger = new Logger( null, null, null );
 
 
 class Logger
